@@ -1,0 +1,25 @@
+.main {
+    background: var(--main-background);
+    display: grid;
+    grid-template-rows: 1fr 15fr;
+}
+
+.top-menu {
+    color: var(--main-color);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.top-menu__nav-button {
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 0;
+    background: transparent;
+    height: fit-content;
+    margin-left: 1em;
+}
+
+.top-menu__nav-button:hover {
+    border-bottom: 0.5em solid var(--underline-color);
+}

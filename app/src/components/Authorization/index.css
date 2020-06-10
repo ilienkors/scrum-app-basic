@@ -1,0 +1,87 @@
+.body {
+    min-height: 100vh;
+    background-image: url("../../images/authorization-background.jpg");
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.main-auth {
+    height: 80vh;
+    width: 50vw;
+    background-color: var(--white-color);
+    border-radius: 0.25em;
+    margin-right: 5vw;
+    padding: 1em;
+}
+
+.top-menu {
+    height: 5vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.top-menu button {
+    margin: 0;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 0;
+    background: transparent;
+    height: fit-content;
+    margin-left: 1em;
+}
+
+.top-menu button:hover {
+    border-bottom: 0.5em solid var(--underline-color);
+}
+
+.login input {
+    width: 100%;
+    border-radius: 0.25em;
+    height: 2em;
+}
+
+.login-button {
+    margin-top: 2em;
+    width: 100%;
+    border: 0;
+    background: var(--violet);
+    height: 2em;
+    color: var(--white-color);
+    border-radius: 0.25em;
+}
+
+.register input {
+    width: 100%;
+    border-radius: 0.25em;
+    height: 2em;
+}
+
+.register input+input {
+    margin-top: 2em;
+}
+
+.get-uuid {
+    margin-top: 2em;
+    width: 100%;
+    border: 0;
+    background: var(--violet);
+    height: 2em;
+    color: var(--white-color);
+    border-radius: 0.25em;
+}
+
+.login-hide {
+    display: none;
+}
+
+.register-hide {
+    display: none;
+}

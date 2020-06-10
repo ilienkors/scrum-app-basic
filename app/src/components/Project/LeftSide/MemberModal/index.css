@@ -1,0 +1,36 @@
+.left-panel__modal-background {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.left-panel__modal-body {
+    width: 40vw;
+    height: 40vh;
+    background-color: white;
+    border-radius: 0.2em;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.left-panel__modal-input {
+    margin-top: 3vh;
+    width: 100%;
+    border-radius: 0.15em;
+}
+
+.left-panel__modal-submit {
+    display: block;
+    margin: 1em auto;
+    padding: 0.5em 1.5em;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: 0;
+    background: rgb(174, 0, 255);
+    color: white;
+    border-radius: 0.15em;
+    height: fit-content;
+}
