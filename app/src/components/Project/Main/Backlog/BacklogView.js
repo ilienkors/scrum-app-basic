@@ -40,7 +40,6 @@ const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember
     else
         modal = null
 
-    console.log('!', tasks)
     let activeTasks = [], notActiveTasks = []
 
     tasks.forEach(task => {
@@ -55,6 +54,7 @@ const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember
                     <p className="task__description">{task.description}</p>
                     <p className="task__story-point">{task.story_points}</p>
                     <p className="task__deadline">{task.deadline}</p>
+                    <p>{task.member_name}</p>
                     <button className="task__remove-task" onClick={() => removeTask(task.task_id)}>remove</button>
                 </div>
             )
@@ -69,6 +69,7 @@ const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember
                     <p className="task__description">{task.description}</p>
                     <p className="task__story-point">{task.story_points}</p>
                     <p className="task__deadline">{task.deadline}</p>
+                    <p>{task.member_name}</p>
                     <button className="task__remove-task" onClick={() => removeTask(task.task_id)}>remove</button>
                 </div>
             )
@@ -91,6 +92,7 @@ const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember
                     <p>Опис</p>
                     <p>Витрати часу</p>
                     <p>Кінцевий термін</p>
+                    <p>Відповідальний</p>
                     <p>Дії</p>
                 </div>
                 <div className="tasks" id="backlog-active" onDragOver={() => setOver(true)}>
@@ -104,6 +106,7 @@ const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember
                     <p>Опис</p>
                     <p>Витрати часу</p>
                     <p>Кінцевий термін</p>
+                    <p>Відповідальний</p>
                     <p>Дії</p>
                 </div>
                 <div className="tasks" id="backlog-plans" onDragOver={() => setOver(false)}>

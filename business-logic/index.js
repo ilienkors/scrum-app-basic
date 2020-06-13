@@ -77,8 +77,7 @@ fastify.get('/tasks/:project_uuid', async (req, reply) => {
     const { project_uuid } = req.params
     const client = await fastify.pg.connect()
     const { rows } = await client.query(
-        `SELECT *
-            FROM task WHERE project_uuid='${project_uuid}';`
+        `SELECT task.*, member.name as member_name FROM public.task INNER JOIN public.member ON task.member_id = member.member_id AND task.project_uuid ='${project_uuid}';`
     )
     client.release()
     return rows
@@ -102,6 +101,40 @@ fastify.post('/task/update', async (req, reply) => {
         `UPDATE public.task
             SET "isActive"=${isActive}
                 WHERE task_id=${task_id};`
+    )
+    client.release()
+    return { status: "ok" }
+})
+
+fastify.post('/task/changeState', async (req, reply) => {
+    const { task_id, state } = req.body
+    const client = await fastify.pg.connect()
+    await client.query(
+        `UPDATE public.task
+            SET state=${state}
+                WHERE task_id=${task_id};`
+    )
+    client.release()
+    return { status: "ok" }
+})
+
+fastify.get('/history/:project_uuid', async (req, reply) => {
+    const { project_uuid } = req.params
+    const client = await fastify.pg.connect()
+    const { rows } = await client.query(
+        `SELECT * FROM public.history WHERE project_uuid='${project_uuid}';`
+    )
+    client.release()
+    return rows
+})
+
+fastify.post('/history', async (req, reply) => {
+    const { task_name, state_from, state_to, date, project_uuid } = req.body
+    const client = await fastify.pg.connect()
+    await client.query(
+        `INSERT INTO public.history(
+            task_name, state_from, state_to, date, project_uuid)
+            VALUES ('${task_name}', ${state_from}, ${state_to}, '${date}', '${project_uuid}');`
     )
     client.release()
     return { status: "ok" }

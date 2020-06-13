@@ -3,7 +3,7 @@ import { MainContext } from './MainContext'
 import MainView from './MainView'
 
 const MainController = () => {
-    const [choice, setChoice] = useState('backlog')
+    const [choice, setChoice] = useState('sprint')
     const [tasks, setTasks] = useState([])
 
     const getInfo = async (url = '') => {

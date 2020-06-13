@@ -1,24 +1,48 @@
 import React from 'react'
 import './index.css'
 
-const SprintView = () => {
+const SprintView = ({ tasks, setOver, changeTaskState }) => {
+    let toDo = [], doing = [], done = []
+
+    tasks.forEach(task => {
+        if (task.isActive === true) {
+            let choosen
+            if (task.state === 0)
+                choosen = toDo
+            if (task.state === 1)
+                choosen = doing
+            if (task.state === 2)
+                choosen = done
+            choosen.push(
+                <div className="card"
+                    key={task.task_id}
+                    draggable={true}
+                    onDragEnd={() => changeTaskState(task)}
+                >
+                    <div className="card__info">
+                        <p className="card__date">{task.deadline}</p>
+                        <p className="card__member">{task.member_name}</p>
+                    </div>
+                    <h3>{task.name}</h3>
+                    <p className="card__description">{task.description}</p>
+                </div>
+            )
+        }
+    });
+
     return (
         <div className="sprint-page">
-            <div className="card-block">
-                <h3 className="sprint-page__title">To do <span className="card-block__count" id="to-do-count">3</span></h3>
-                <div className="card">
-                    <div className="card__info">
-                        <p className="card__date">12 jun</p>
-                        <p className="card__member">Roma</p>
-                    </div>
-                    <p className="card__description">description</p>
-                </div>
+            <div className="card-block" onDragOver={() => setOver(0)}>
+                <h3 className="sprint-page__title">To do <span className="card-block__count" id="to-do-count">{toDo.length}</span></h3>
+                {toDo}
             </div>
-            <div className="card-block">
-                <h3 className="sprint-page__title">Doing <span className="card-block__count" id="doing-count">3</span></h3>
+            <div className="card-block" onDragOver={() => setOver(1)}>
+                <h3 className="sprint-page__title">Doing <span className="card-block__count" id="doing-count">{doing.length}</span></h3>
+                {doing}
             </div>
-            <div className="card-block">
-                <h3 className="sprint-page__title">Done <span className="card-block__count" id="done-count">3</span></h3>
+            <div className="card-block" onDragOver={() => setOver(2)}>
+                <h3 className="sprint-page__title">Done <span className="card-block__count" id="done-count">{done.length}</span></h3>
+                {done}
             </div>
         </div>
     )
