@@ -43,7 +43,12 @@ const LeftSideController = () => {
         getMembers(`http://localhost:5000/members/${localStorage.getItem('project_uuid')}`)
             .then((data) => {
                 let membersArray = []
+                let membersArrayList = []
                 data.forEach(member => {
+                    membersArrayList.push({
+                        member_id: member.member_id,
+                        name: member.name
+                    })
                     membersArray.push(
                         <li className='member-list__member' key={member.member_id}>
                             {member.name}
@@ -63,8 +68,10 @@ const LeftSideController = () => {
             });
     }
 
+    
     useEffect(() => {
         refreshMembers()
+        // eslint-disable-next-line
     }, [])
 
     return (

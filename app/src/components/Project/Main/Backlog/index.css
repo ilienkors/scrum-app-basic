@@ -154,3 +154,21 @@
     width: 100%;
     padding: 0.1em 0.1em;
 }
+
+.backlog__modal-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.329);
+}
+
+.backlog__modal-body {
+    width: 40vw;
+    height: 70vh;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 0.2em;
+    padding: 0.5em;
+}
