@@ -13,6 +13,7 @@ const BacklogController = () => {
     const [storyPoints, setStoryPoints] = useState('')
     const [deadline, setDeadline] = useState('')
     const [over, setOver] = useState(false)
+    const [baes, setBaes] = useState(1)
 
     const getInfo = async (url = '') => {
         const response = await fetch(url, {
@@ -109,6 +110,16 @@ const BacklogController = () => {
             });
     }
 
+    const countBaes = () => {
+        postData('http://localhost:8080/baes', {
+            words: description
+        })
+            .then((data) => {
+                setBaes(data.story)
+                setStoryPoints(data.story)
+            });
+    }
+
     return (
         <BacklogView
             showModal={showModal}
@@ -124,6 +135,8 @@ const BacklogController = () => {
             removeTask={removeTask}
             setOver={setOver}
             updateTask={updateTask}
+            baes={baes}
+            countBaes={countBaes}
         />
     )
 }

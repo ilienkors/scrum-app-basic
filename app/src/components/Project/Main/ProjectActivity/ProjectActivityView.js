@@ -4,13 +4,13 @@ import './index.css'
 const ProjectActivityView = ({ log }) => {
     log = log.map(singleLog => {
         return (
-            <p key={singleLog.log_id}>{singleLog.task_name} changed state from "{singleLog.state_from}" to "{singleLog.state_to}" at {singleLog.date}</p>
+            <p key={singleLog.log_id}>Завдання "{singleLog.task_name}" змінило стан з "{singleLog.state_from}" на "{singleLog.state_to}" о {singleLog.date}</p>
         )
     })
 
     return (
         <div className="project-activity-page">
-            <h3>Activity history</h3>
+            <h3>Історія змін</h3>
             {log}
         </div>
     )

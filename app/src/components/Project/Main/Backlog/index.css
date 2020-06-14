@@ -172,3 +172,8 @@
     border-radius: 0.2em;
     padding: 0.5em;
 }
+
+.backlog__modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}

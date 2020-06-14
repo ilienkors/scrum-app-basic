@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 
-const AddTaskModal = ({ setShowModal, membersSelect, setSelectedMember, setName, setDescription, setStoryPoints, setDeadline, addTask }) => {
+const AddTaskModal = ({ setShowModal, membersSelect, setSelectedMember, setName, setDescription, setStoryPoints, setDeadline, addTask, baes, countBaes }) => {
     let membersSelectNew = membersSelect.map((member) => {
         return <option key={member.member_id} value={member.member_id}>{member.name}</option>
     })
@@ -15,16 +15,20 @@ const AddTaskModal = ({ setShowModal, membersSelect, setSelectedMember, setName,
                 <select className="modal__modal-input" onChange={event => setSelectedMember(event.target.value)}>
                     {membersSelectNew}
                 </select>
-                <input type="number" className="modal__modal-input" min="1" max="20" onChange={event => setStoryPoints(event.target.value)} />
+                <input type="number" className="modal__modal-input" min="1" max="20" onChange={event => setStoryPoints(event.target.value)} value={baes}/>
                 <input type="date" className="modal__modal-input" onChange={event => setDeadline(event.target.value)} />
-                <button className="modal__confirm" onClick={() => addTask()}>Надіслати</button>
-                <button className="modal__close" onClick={() => setShowModal(false)}>Закрити</button>
+                <div className="backlog__modal-buttons">
+                    <button className="modal__confirm" onClick={() => addTask()}>Надіслати</button>
+                    <button className="modal__confirm" onClick={() => countBaes()}>Визначити тривалисть</button>
+                    <button className="modal__close" onClick={() => setShowModal(false)}>Закрити</button>
+                </div>
+
             </div>
         </div>
     )
 }
 
-const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember, setName, setDescription, setStoryPoints, setDeadline, addTask, tasks, removeTask, setOver, updateTask }) => {
+const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember, setName, setDescription, setStoryPoints, setDeadline, addTask, tasks, removeTask, setOver, updateTask, baes, countBaes }) => {
     let modal
     if (showModal)
         modal = <AddTaskModal
@@ -36,6 +40,8 @@ const BacklogView = ({ showModal, setShowModal, membersSelect, setSelectedMember
             setStoryPoints={setStoryPoints}
             setDeadline={setDeadline}
             addTask={addTask}
+            baes={baes}
+            countBaes={countBaes}
         />
     else
         modal = null

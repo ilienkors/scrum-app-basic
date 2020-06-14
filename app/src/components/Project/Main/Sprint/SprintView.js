@@ -33,15 +33,15 @@ const SprintView = ({ tasks, setOver, changeTaskState }) => {
     return (
         <div className="sprint-page">
             <div className="card-block" onDragOver={() => setOver(0)}>
-                <h3 className="sprint-page__title">To do <span className="card-block__count" id="to-do-count">{toDo.length}</span></h3>
+                <h3 className="sprint-page__title">Планові <span className="card-block__count" id="to-do-count">{toDo.length}</span></h3>
                 {toDo}
             </div>
             <div className="card-block" onDragOver={() => setOver(1)}>
-                <h3 className="sprint-page__title">Doing <span className="card-block__count" id="doing-count">{doing.length}</span></h3>
+                <h3 className="sprint-page__title">В розробці <span className="card-block__count" id="doing-count">{doing.length}</span></h3>
                 {doing}
             </div>
             <div className="card-block" onDragOver={() => setOver(2)}>
-                <h3 className="sprint-page__title">Done <span className="card-block__count" id="done-count">{done.length}</span></h3>
+                <h3 className="sprint-page__title">Виконані <span className="card-block__count" id="done-count">{done.length}</span></h3>
                 {done}
             </div>
         </div>
