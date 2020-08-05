@@ -9,7 +9,7 @@
   "author": "Roman Ilienko",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^2.14.1",
+    "fastify": "^2.15.1",
     "fastify-cors": "^3.0.3",
     "fastify-postgres": "^2.0.0",
     "pg": "^8.2.1"
